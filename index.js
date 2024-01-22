@@ -10,10 +10,11 @@ const start = async () => {
         await sequelize.authenticate()
         await  sequelize.sync()
         app.listen(3000, HOST,() => {
-            console.log(`Server is started is ${HOST} on port: ${PORT}` )
+            console.log('***Соединение с БД было успешно установлено***')
+            console.log(`***Сервер запушен на ${HOST} порт: ${PORT}***`)
         })
     } catch (e) {
-        console.log(e)
+        console.log('***Невозможно выполнить подключение к БД: ',e)
     }
 }
 
