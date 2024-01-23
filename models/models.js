@@ -1,6 +1,16 @@
 const sequelize = require("../db")
 const { DataTypes} = require("sequelize")
 
+const User = sequelize.define('user', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    login: {type: DataTypes.STRING, unique: true},
+    password: {type: DataTypes.STRING},
+    role:  {type: DataTypes.STRING, defaultValue: 'USER'},
+},
+{
+    timestamps: false,
+})
+
 // Товары
 const Product = sequelize.define('product', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
@@ -112,6 +122,7 @@ Value.hasMany(ProductProperty)
 ProductProperty.belongsTo(Value)
 
 module.exports = {
+    User,
     Product,
     Category,
     Brand,
